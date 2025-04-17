@@ -88,12 +88,6 @@ const Filters: React.FC<FiltersProps> = ({ contentType, onFilterChange }) => {
     onFilterChange(params);
   };
 
-  const toggleSortOrder = () => {
-    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-    setSortOrder(newSortOrder);
-    const params = updateFilters({ sortOrder: newSortOrder });
-    onFilterChange(params);
-  };
 
   // Reset all filters
   const resetFilters = () => {
