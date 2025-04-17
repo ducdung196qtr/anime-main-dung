@@ -29,21 +29,6 @@ const Filters: React.FC<FiltersProps> = ({ contentType, onFilterChange }) => {
   const typeOptions = contentType === 'anime' ? ANIME_TYPES : MANGA_TYPES;
   const statusOptions = contentType === 'anime' ? STATUS_OPTIONS : MANGA_STATUS_OPTIONS;
 
-  // Apply filters
-  const applyFilters = () => {
-    const params: SearchParams = {
-      order_by: sortBy,
-      sort: sortOrder
-    };
-
-    if (type) params.type = type.toLowerCase();
-    if (status) params.status = status;
-    if (rating && contentType === 'anime') params.rating = rating;
-    if (genre) params.genres = genre;
-
-    onFilterChange(params);
-  };
-
   // Handle filter changes
   const updateFilters = (updates: Partial<{
     type: string;
@@ -59,11 +44,6 @@ const Filters: React.FC<FiltersProps> = ({ contentType, onFilterChange }) => {
     const newGenre = updates.genre !== undefined ? updates.genre : genre;
     const newSortBy = updates.sortBy !== undefined ? updates.sortBy : sortBy;
     const newSortOrder = updates.sortOrder !== undefined ? updates.sortOrder : sortOrder;
-
-
-    if (updates.sortBy !== undefined) onFilterChange({ order_by: newSortBy });
-    if (updates.sortOrder !== undefined) onFilterChange({ sort: newSortOrder });
-
 
     const params: SearchParams = {
       order_by: newSortBy,
@@ -196,7 +176,7 @@ const Filters: React.FC<FiltersProps> = ({ contentType, onFilterChange }) => {
 
       <div className="mb-8 border-t border-gray-700/30 pt-6">
         <h3 className="font-medium text-gray-700 dark:text-gray-200 mb-2">Sort By</h3>
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
           <div className="flex flex-wrap gap-2 flex-1">
             {SORT_OPTIONS.map((option) => (
               <div
@@ -211,6 +191,17 @@ const Filters: React.FC<FiltersProps> = ({ contentType, onFilterChange }) => {
               </div>
             ))}
           </div>
+          <button
+            onClick={() => {
+              const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+              setSortOrder(newSortOrder);
+              const params = updateFilters({ sortOrder: newSortOrder });
+              onFilterChange(params);
+            }}
+            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gradient-to-r from-indigo-500 to-purple-500 text-gray-700 dark:text-gray-200 hover:text-white transition-all duration-300"
+          >
+            {sortOrder === 'asc' ? '↑' : '↓'}
+          </button>
         </div>
       </div>
     </div>

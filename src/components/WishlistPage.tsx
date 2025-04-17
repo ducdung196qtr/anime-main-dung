@@ -90,7 +90,11 @@ const WishlistPage: React.FC = () => {
         )}
       </div>
 
-      {filteredItems.length === 0 ? (
+      {isLoading ? (
+        <div className="text-center py-16 bg-gray-100 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-xl border border-gray-700/50 max-w-lg mx-auto">
+          <p className="text-gray-700 dark:text-gray-300 text-lg">Loading wishlist items...</p>
+        </div>
+      ) : filteredItems.length === 0 ? (
         <div className="text-center py-16 bg-gray-100 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-xl border border-gray-700/50 max-w-lg mx-auto">
           <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">Your {activeTab} wishlist is empty.</p>
           <button
