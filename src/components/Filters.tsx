@@ -88,7 +88,6 @@ const Filters: React.FC<FiltersProps> = ({ contentType, onFilterChange }) => {
     onFilterChange(params);
   };
 
-
   // Reset all filters
   const resetFilters = () => {
     // Reset all state values

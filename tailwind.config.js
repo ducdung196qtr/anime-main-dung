@@ -10,6 +10,12 @@ export default {
       fontFamily: {
         sans: ['Sora', 'sans-serif'],
       },
+      colors: {
+        'primary-light': '#ffffff',
+        'primary-dark': '#1a1a1a',
+        'text-light': '#000000',
+        'text-dark': '#ffffff'
+      }
     },
   },
   plugins: [],
