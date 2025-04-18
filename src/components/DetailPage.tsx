@@ -89,8 +89,8 @@ const DetailPage: React.FC<DetailPageProps> = ({ contentType }) => {
   const mangaItem = !isAnime ? item as MangaItem : null;
   
   return (
-    <div className="container mx-auto py-8 bg-white dark:bg-gray-900">
-      <div className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <div className="container mx-auto py-8 dark:bg-gray-900">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
 
         {/* Header with image and basic info */}
         <div className="flex flex-col md:flex-row">
@@ -104,6 +104,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ contentType }) => {
           
           <div className="p-4 md:p-6 w-full md:w-2/3 lg:w-3/4">
             <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">{item.title}</h1> 
               <button
                 onClick={handleWishlistToggle}
                 className={`py-3 px-8 rounded-lg transition-all duration-300 text-sm sm:text-base font-medium whitespace-nowrap mb-4 md:mb-0 ${ inWishlist
@@ -113,7 +114,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ contentType }) => {
               >
                 {inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
               </button>
-              <h1 className="text-2xl sm:text-3xl font-bold mb-2">{item.title}</h1>
+             
             </div>
             
             {item.title_english && item.title_english !== item.title && (
