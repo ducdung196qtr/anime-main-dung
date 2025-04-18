@@ -62,44 +62,47 @@ const WishlistPage: React.FC = () => {
   const filteredItems = wishlistItems.filter(item => item.type === activeTab);
 
   return (
-    <div className="min-h-screen py-8 px-4 transition-all duration-300">
-      <h1 className="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">My Wishlist</h1>
-      {/* Tab Navigation */}
-      <div className="flex flex-col items-center gap-4 mb-8">
-        <div className="bg-gray-100 dark:bg-gray-800/30 rounded-lg p-1">
-          <button
-            onClick={() => setActiveTab('anime')}
-            className={`px-6 py-2 rounded-md transition-all duration-300 ${activeTab === 'anime' ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white' : 'text-gray-700 dark:text-white '}`}
-          >
-            Anime
-          </button>
-          <button
-            onClick={() => setActiveTab('manga')}
-            className={`px-6 py-2 rounded-md transition-all duration-300 ${activeTab === 'manga' ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white' : 'text-gray-700 dark:text-white'}`}
-          >
-            Manga
-          </button>
+    <div className="min-h-screen py-4 sm:py-8 px-2 sm:px-4 transition-all duration-300">
+      <div className="flex flex-col items-center sm:items-start gap-4 mb-6 sm:mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center sm:text-left text-gray-900 dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">My Wishlist</h1>
+        <div className="flex flex-col sm:flex-row justify-between w-full items-center gap-4">
+          <div className="bg-gray-300 dark:bg-gray-800/30 rounded-lg p-1 w-full sm:w-auto">
+            <div className="flex flex-row justify-center sm:justify-start">
+              <button
+                onClick={() => setActiveTab('anime')}
+                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-md transition-all duration-300 ${activeTab === 'anime' ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white' : 'text-gray-700 dark:text-white'}`}
+              >
+                Anime
+              </button>
+              <button
+                onClick={() => setActiveTab('manga')}
+                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-md transition-all duration-300 ${activeTab === 'manga' ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white' : 'text-gray-700 dark:text-white'}`}
+              >
+                Manga
+              </button>
+            </div>
+          </div>
+          {filteredItems.length > 0 && (
+            <button
+              onClick={handleRemoveAllByType}
+              className="w-full sm:w-auto bg-gradient-to-r from-red-500 to-pink-600 hover:from-pink-600 hover:to-red-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300"
+            >
+              Remove All {activeTab === 'anime' ? 'Anime' : 'Manga'}
+            </button>
+          )}
         </div>
-        {filteredItems.length > 0 && (
-          <button
-            onClick={handleRemoveAllByType}
-            className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-pink-600 hover:to-red-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300"
-          >
-            Remove All {activeTab === 'anime' ? 'Anime' : 'Manga'}
-          </button>
-        )}
       </div>
 
       {isLoading ? (
-        <div className="text-center py-16 bg-gray-100 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-xl border border-gray-700/50 max-w-lg mx-auto">
-          <p className="text-gray-700 dark:text-gray-300 text-lg">Loading wishlist items...</p>
+        <div className="text-center py-12 sm:py-16 bg-white dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-xl border border-gray-700/50 mx-4 sm:mx-auto ">
+          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg">Loading wishlist items...</p>
         </div>
       ) : filteredItems.length === 0 ? (
-        <div className="text-center py-16 bg-gray-100 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-xl border border-gray-700/50 max-w-lg mx-auto">
-          <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">Your {activeTab} wishlist is empty.</p>
+        <div className="text-center py-20 sm:py-24 bg-white dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-xl border border-gray-700/50 mx-4 sm:mx-auto ">
+          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6">Your {activeTab} wishlist is empty.</p>
           <button
             onClick={() => navigate(activeTab === 'anime' ? '/' : '/manga')}
-            className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg sm:w-auto mx-4 sm:mx-0"
           >
             Browse {activeTab === 'anime' ? 'Anime' : 'Manga'}
           </button>

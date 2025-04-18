@@ -133,7 +133,7 @@ const Filters: React.FC<FiltersProps> = ({ contentType, onFilterChange }) => {
               <path d="m4 1v4h-4" transform="matrix(1 0 0 -1 0 6)"></path> 
             </g> 
           </svg>
-          Reset Filters
+          Reset
         </button>
       </div>
 
@@ -184,17 +184,6 @@ const Filters: React.FC<FiltersProps> = ({ contentType, onFilterChange }) => {
               </div>
             ))}
           </div>
-          <button
-            onClick={() => {
-              const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-              setSortOrder(newSortOrder);
-              const params = updateFilters({ sortOrder: newSortOrder });
-              onFilterChange(params);
-            }}
-            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gradient-to-r from-indigo-500 to-purple-500 text-gray-700 dark:text-gray-200 hover:text-white transition-all duration-300"
-          >
-            {sortOrder === 'asc' ? '↑' : '↓'}
-          </button>
         </div>
       </div>
     </div>

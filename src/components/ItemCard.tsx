@@ -25,8 +25,8 @@ const ItemCard: React.FC<ItemCardProps> = ({
   const rating = isAnime ? (item as AnimeItem).rating : 'N/A';
   
   return (
-    <div className="bg-gray-200/50 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 text-gray-900 dark:text-white h-full flex flex-col">
-      <div className="relative cursor-pointer group" onClick={onClick}>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 text-gray-900 dark:text-white h-full flex flex-col">
+      <div className="relative cursor-pointer group overflow-hidden" onClick={onClick}>
         <img 
           src={item.images.jpg.image_url} 
           alt={item.title}

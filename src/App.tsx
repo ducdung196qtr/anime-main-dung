@@ -12,13 +12,13 @@ const App: React.FC = () => {
   return (
     <ThemeProvider>
       <Router>
-      <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-        <nav className="bg-gray-100 dark:bg-gray-800 transition-colors duration-300 sticky top-0 z-50 shadow-sm">
+      <div className="min-h-screen bg-gray-200/50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+        <nav className="bg-gray-200 dark:bg-gray-800 transition-colors duration-300 sticky top-0 z-50 shadow-sm">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center py-3">
               <div className="flex items-center">
-                <Link to="/" className="flex items-center justify-center text-xl font-bold text-blue-600 dark:text-blue-400 transition-colors duration-300">
-                  <img src="/logo.png" alt="Logo" className="w-16 md:w-20 mr-2" />
+                <Link to="/" className="flex items-center justify-center text-2xl font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300">
+                  <img src="/logo.png" alt="Logo" className="w-24 md:w-32 mr-3 hover:scale-105 transition-transform duration-300" />
                 </Link>
               </div>
 
